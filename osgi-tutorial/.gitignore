@@ -1,0 +1,57 @@
+###
+# Eclipse
+###
+.classpath
+.cproject
+.project
+.settings
+/bin/
+
+###
+# IntelliJ
+###
+*.iml
+.idea
+
+###
+# Maven
+###
+target/
+target.*/
+
+###
+# Test Output
+###
+test-output/
+
+###
+# Maven shade plugin
+###
+*dependency-reduced-pom.xml
+
+###
+# Build artifacts
+###
+*.class
+*.o
+*.so
+*.jar
+
+
+###
+# vi(m) temp files 
+###
+*.swp
+*.swo
+*.swn
+
+###
+# Visual Studio
+###
+.vscode/
+.factorypath
+
+###
+# Misc files
+###
+org.kde.konsole.desktop
