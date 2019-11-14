@@ -12,9 +12,13 @@
 
 	<modules>
         <module>simple_hello</module>
-		<module>simple_dictionary</module>
-		<module>dictionary_client</module>	    
 		<module>tutorial_api</module>
+		<module>simple_dictionary</module>
+		<module>dictionary_client</module>
+		<module>robust_client</module>
+		<module>spell_service</module>
+		<module>spell_client</module>
+		<module>spell_client_reference</module>		
 	</modules>
 
 	<dependencies>

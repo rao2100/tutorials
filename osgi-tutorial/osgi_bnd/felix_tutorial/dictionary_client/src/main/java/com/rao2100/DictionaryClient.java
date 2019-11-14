@@ -79,7 +79,7 @@ public class DictionaryClient {
 
 	@Deactivate
 	public void stop(BundleContext context) {
-		// log.info("Bye World");
+		log.info("Stopping DictionaryClient");
 	}
 
 	

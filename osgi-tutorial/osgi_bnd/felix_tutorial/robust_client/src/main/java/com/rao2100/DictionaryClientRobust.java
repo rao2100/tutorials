@@ -21,10 +21,10 @@ import org.slf4j.LoggerFactory;
 import com.rao2100.service.DictionaryService;
 
 @Component
-public class DictionaryClient {    
+public class DictionaryClientRobust {    
     Logger log = LoggerFactory.getLogger(this.getClass());
 
-       // Bundle's context.
+    // Bundle's context.
     private BundleContext m_context = null;
     // The service tacker object.
     private ServiceTracker m_tracker = null;
@@ -88,7 +88,7 @@ public class DictionaryClient {
 
 	@Deactivate
 	public void stop(BundleContext context) {
-		// log.info("Bye World");
+		log.info("Stopping DictionaryClientRobust");
 	}
 	
 	

@@ -14,6 +14,10 @@ import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.util.tracker.ServiceTracker;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,13 +25,22 @@ import org.slf4j.LoggerFactory;
 import com.rao2100.service.SpellCheckService;
 
 @Component
-public class SpellClient {    
+public class SpellClientReference {    
     Logger log = LoggerFactory.getLogger(this.getClass());
 
     // Bundle's context.
     private BundleContext m_context = null;
     // The service tacker object.
-    private ServiceTracker m_tracker = null;
+    // private ServiceTracker m_tracker = null;
+
+    // @Reference(policy=ReferencePolicy.DYNAMIC, cardinality=ReferenceCardinality.AT_LEAST_ONE)
+    private volatile SpellCheckService checker;    
+
+    @Reference
+    void bindSpellCheckService(SpellCheckService checker) {
+        this.checker = checker;
+    }
+
 
 	@Activate
 	public void start(BundleContext context) throws Exception {
@@ -35,14 +48,6 @@ public class SpellClient {
         System.out.println("Starting spell client");
 
 		m_context = context;
-
-        // Create a service tracker to monitor dictionary services.
-        m_tracker = new ServiceTracker(
-            m_context,
-            m_context.createFilter(
-                "(objectClass=" + SpellCheckService.class.getName() + ")"),
-            null);
-        m_tracker.open();
 
         try
         {
@@ -58,7 +63,7 @@ public class SpellClient {
                 passage = in.readLine();
 
                 // Get the selected dictionary service, if available.
-                SpellCheckService checker = (SpellCheckService) m_tracker.getService();
+                // SpellCheckService checker = (SpellCheckService) m_tracker.getService();
 
                 // If the user entered a blank line, then
                 // exit the loop.
@@ -96,7 +101,7 @@ public class SpellClient {
 
 	@Deactivate
 	public void stop(BundleContext context) {
-		log.info("Stopping SpellClient");
+		log.info("Stopping SpellClientReference");
 	}
 	
 	
