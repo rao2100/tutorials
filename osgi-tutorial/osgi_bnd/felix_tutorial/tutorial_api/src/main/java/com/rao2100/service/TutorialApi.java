@@ -12,19 +12,19 @@ import org.slf4j.LoggerFactory;
 
 import com.rao2100.service.DictionaryService;
 
-@Component
+// @Component
 public class TutorialApi {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@Activate
-	public void start(BundleContext context) {
-		log.info("Hello World");
-	}
+	// @Activate
+	// public void start(BundleContext context) {
+	// 	log.info("Hello World");
+	// }
 
-	@Deactivate
-	public void stop(BundleContext context) {
-		log.info("Bye World");
-	}
+	// @Deactivate
+	// public void stop(BundleContext context) {
+	// 	log.info("Bye World");
+	// }
 
 	
 }
